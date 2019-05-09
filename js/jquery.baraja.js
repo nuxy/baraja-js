@@ -9,11 +9,7 @@
  * http://www.codrops.com
  */
 ;( function( $, window, undefined ) {
-	
 	'use strict';
-
-	// global
-	var Modernizr = window.Modernizr;
 
 	jQuery.fn.reverse = [].reverse;
 
@@ -50,7 +46,7 @@
 				'msTransition' : 'MSTransitionEnd',
 				'transition' : 'transitionend'
 			};
-			this.transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ];
+			this.transEndEventName = transEndEventNames['transition'];
 
 			this._setDefaultFanSettings();
 
@@ -60,7 +56,7 @@
 				return false;
 			}
 			// support for CSS Transitions
-			this.supportTransitions = Modernizr.csstransitions;
+			this.supportTransitions = true;
 			// opened/closed deck
 			this.closed = true;
 			// lowest value for the z-index given to the items
@@ -659,3 +655,4 @@
 	};
 	
 } )( jQuery, window );
+
