@@ -39,7 +39,7 @@ function Baraja(container, options) {
     self.fanSettings = {
       easing:      'ease-out',
       direction:   'right',
-      origin:      { x: 25, y: 100 },
+      origin:      {x: 25, y: 100},
       speed:       500,
       range:       90,
       translation: 0,
@@ -89,7 +89,8 @@ function Baraja(container, options) {
    */
   function setStack(items = self.items) {
     items.forEach(function(item, index) {
-      item.style.zIndex = (self.zIndexMin + self.itemTotal - 1 - index).toString();
+      item.style.zIndex = (self.zIndexMin + self.itemTotal - 1 - index)
+        .toString();
     });
   }
 
@@ -192,13 +193,13 @@ function Baraja(container, options) {
     property   = 'all',
     duration   = self.options.speed,
     timingFunc = self.options.easing,
-    delay = 0)
-  {
-    if (property === 'transform') {
-      element.style.transition = `transform ${duration}ms ${timingFunc} ${delay}ms`;
-    } else {
-      element.style.transition = `${property} ${duration}ms ${timingFunc} ${delay}ms`;
-    }
+    delay      = 0) {
+
+    const animation = `${duration}ms ${timingFunc} ${delay}ms`;
+
+    element.style.transition = (property === 'transform')
+      ? `transform ${animation}`
+      : `${property} ${animation}`;
   }
 
   /**
@@ -245,11 +246,17 @@ function Baraja(container, options) {
   function move2front(element) {
     self.isAnimating = true;
 
-    const isTop = (parseInt(element.style.zIndex) === self.zIndexMin + self.itemTotal - 1);
+    const zIndexCurr = parseInt(element.style.zIndex);
+
+    const isTop = (zIndexCurr === self.zIndexMin + self.itemTotal - 1);
 
     const callback = (isTop)
-      ? function() { self.isAnimating = false; }
-      : function() { return false;             };
+      ? function() {
+          self.isAnimating = false;
+        }
+      : function() {
+          return false;
+        };
 
     element = (isTop)
       ? null
@@ -411,7 +418,9 @@ function Baraja(container, options) {
       const stepOrigin = (max - min) / self.itemTotal;
 
       self.items.forEach(function(item) {
-        const pos = self.itemTotal - 1 - (parseInt(item.style.zIndex) - self.zIndexMin);
+        const zIndexCurr = parseInt(item.style.zIndex);
+
+        const pos = self.itemTotal - 1 - (zIndexCurr - self.zIndexMin);
 
         let originX = pos * (max - min + stepOrigin) / self.itemTotal + min;
 
@@ -434,9 +443,11 @@ function Baraja(container, options) {
     let count = 0;
 
     self.items.forEach(function(item) {
-      setTransition(item, 'transform', settings.speed, settings.easing);
+      setTransition(item, 'transform');
 
-      const pos = self.itemTotal - 1 - (parseInt(item.style.zIndex) - self.zIndexMin);
+      const zIndexCurr = parseInt(item.style.zIndex);
+
+      const pos = self.itemTotal - 1 - (zIndexCurr - self.zIndexMin);
 
       const val = (settings.center)
         ? settings.range / 2
@@ -511,7 +522,7 @@ function Baraja(container, options) {
       translation = element.offsetWidth * -1 - 15;
     }
 
-    setTransition(element, 'transform', self.options.speed, self.options.easing);
+    setTransition(element, 'transform');
 
     let cssTransform = `translate(${translation}px) rotate(${rotation}deg)`;
 
@@ -591,8 +602,12 @@ function Baraja(container, options) {
 }
 
 /**
- * Set global instance.
+ * Set global/exportable instance, where supported.
  */
-window.baraja = function(container, options) {
+window.baraja = function (container, options) {
   return new Baraja(container, options);
 };
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = Baraja;
+}
