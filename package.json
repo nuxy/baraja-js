@@ -2,15 +2,20 @@
   "name": "barajajs",
   "version": "0.0.1",
   "description": "A plugin for spreading items in a card-like fashion.",
-  "main": "dist/baraja.min.js",
+  "main": "src/baraja.js",
   "scripts": {
-    "build": "node_modules/.bin/babel src -s -D -d dist --presets env",
+    "build": "node_modules/.bin/babel src -s -D -d dist --presets env && npm run minify-css && npm run minify-js",
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
+    "minify-css": "node_modules/.bin/node-minify --compressor clean-css --input 'dist/baraja.css' --output 'dist/baraja.min.css'",
+    "minify-js": "node_modules/.bin/node-minify --compressor uglify-js --input 'dist/baraja.js' --output 'dist/baraja.min.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
   "license": "MIT",
   "devDependencies": {
+    "@node-minify/clean-css": "^4.0.5",
+    "@node-minify/cli": "^4.1.0",
+    "@node-minify/uglify-js": "^4.0.5",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
