@@ -7,9 +7,9 @@
  *  http://www.opensource.org/licenses/mit-license.php
  */
 function Baraja(container, options) {
-  var self = this;
+  const self = this;
 
-  var defaults = {
+  const defaults = {
     easing: 'ease-in-out',
     speed:  300
   };
@@ -84,14 +84,12 @@ function Baraja(container, options) {
   /**
    * Set the zIndex for the given items.
    *
-   * @param {Array} items
-   *   Array of HTML items.
+   * @param {Array} items.
+   *   Array of HTML elements (optional).
    */
-  function setStack(items) {
-    items = items || self.items;
-
+  function setStack(items = self.items) {
     items.forEach(function(item, index) {
-      item.style.zIndex = (self.zIndexMin + self.itemTotal - 1 - index);
+      item.style.zIndex = (self.zIndexMin + self.itemTotal - 1 - index).toString();
     });
   }
 
@@ -105,20 +103,18 @@ function Baraja(container, options) {
    *   Stack direction (next|prev).
    */
   function updateStack(element, direction) {
-    var stepNext = (direction === 'next');
+    const stepNext = (direction === 'next');
 
-    var zIndexCurr = parseInt(element.style.zIndex);
+    const zIndexCurr = parseInt(element.style.zIndex);
 
-    var zIndexNew = (stepNext)
+    element.style.zIndex = (stepNext)
       ? self.zIndexMin - 1
       : self.zIndexMin + self.itemTotal;
 
-    element.style.zIndex = zIndexNew;
-
     self.items.forEach(function(item) {
-      var zIndex = parseInt(item.style.zIndex);
+      const zIndex = parseInt(item.style.zIndex);
 
-      var update = (stepNext)
+      const update = (stepNext)
         ? (zIndex < zIndexCurr)
         : (zIndex > zIndexCurr);
 
@@ -134,13 +130,11 @@ function Baraja(container, options) {
    * Initialize element click event handlers.
    *
    * @param {Array} items
-   *   Array of HTML items.
+   *   Array of HTML elements (optional).
    */
-  function initClickEvents(items) {
-    items = items || self.items;
-
+  function initClickEvents(items = self.items) {
     items.forEach(function(item) {
-      var eventHandler = function() {
+      const eventHandler = function() {
         if (!self.isAnimating) {
           move2front(item);
         }
@@ -166,14 +160,14 @@ function Baraja(container, options) {
    * @param {HTMLElement} element
    *   HTML element.
    *
-   * @param {String} x
+   * @param {Number} x
    *   Horizontal axis.
    *
-   * @param {String} y
-   *   Verticle axis.
+   * @param {Number} y
+   *   Vertical axis.
    */
   function setOrigin(element, x, y) {
-    element.style.transformOrigin = x + '% ' + y + '%';
+    element.style.transformOrigin = `${x}% ${y}%`;
   }
 
   /**
@@ -191,30 +185,19 @@ function Baraja(container, options) {
    * @param {String} timingFunc
    *   Timing-function (optional).
    *
-   * @param {String} delay
+   * @param {Number} delay
    *   Delay (optional).
    */
-  function setTransition(element, property, duration, timingFunc, delay) {
-    if (!property) {
-      property = 'all';
-    }
-
-    if (!duration) {
-      duration = self.options.speed;
-    }
-
-    if (!timingFunc) {
-      timingFunc = self.options.easing;
-    }
-
-    if (!delay) {
-      delay = 0;
-    }
-
+  function setTransition(element,
+    property   = 'all',
+    duration   = self.options.speed,
+    timingFunc = self.options.easing,
+    delay = 0)
+  {
     if (property === 'transform') {
-      element.style.transition = 'transform ' + duration + 'ms ' + timingFunc + ' ' + delay + 'ms';
+      element.style.transition = `transform ${duration}ms ${timingFunc} ${delay}ms`;
     } else {
-      element.style.transition = property + ' ' + duration + 'ms ' + timingFunc + ' ' + delay + 'ms';
+      element.style.transition = `${property} ${duration}ms ${timingFunc} ${delay}ms`;
     }
   }
 
@@ -231,9 +214,9 @@ function Baraja(container, options) {
    *   Listener event handler.
    *
    * @param {Boolean} force
-   *   Force listener event.
+   *   Force listener event (optional).
    */
-  function applyTransition(element, easing, eventHandler, force) {
+  function applyTransition(element, easing, eventHandler, force = false) {
     if (eventHandler) {
       element.addEventListener('transitionend', eventHandler, false);
 
@@ -242,9 +225,9 @@ function Baraja(container, options) {
       }
     }
 
-    var timer = window.setTimeout(function() {
+    const timer = window.setTimeout(function() {
       if (easing === 'none') {
-        element.style.opacity = 1;
+        element.style.opacity = '1';
       }
 
       element.style.transform = easing;
@@ -262,9 +245,9 @@ function Baraja(container, options) {
   function move2front(element) {
     self.isAnimating = true;
 
-    var isTop = (parseInt(element.style.zIndex) === self.zIndexMin + self.itemTotal - 1);
+    const isTop = (parseInt(element.style.zIndex) === self.zIndexMin + self.itemTotal - 1);
 
-    var callback = (isTop)
+    const callback = (isTop)
       ? function() { self.isAnimating = false; }
       : function() { return false;             };
 
@@ -286,17 +269,17 @@ function Baraja(container, options) {
 
     setOrigin(element, 50, 50);
 
-    element.style.opacity   = 0;
+    element.style.opacity   = '0';
     element.style.transform = 'scale(2) translate(100px) rotate(20deg)';
 
     updateStack(element, 'prev');
 
-    var timer = window.setTimeout(function() {
+    const timer = window.setTimeout(function() {
       setTransition(element, 'all', self.options.speed, 'ease-in');
 
-      var cssTransform = 'none';
+      const cssTransform = 'none';
 
-      var eventHandler = function() {
+      const eventHandler = function() {
         element.removeEventListener('transitionend', eventHandler);
 
         self.isAnimating = false;
@@ -312,21 +295,21 @@ function Baraja(container, options) {
    * Add items to the HTMLElement container.
    *
    * @param {String} html
-   *   HTML items as text.
+   *   HTML elements as text.
    */
   function add(html) {
     container.insertAdjacentHTML('beforeend', html);
 
-    var oldItemTotal = self.itemTotal;
+    const oldItemTotal = self.itemTotal;
 
-    var currItems = getItemsAsArray();
+    const currItems = getItemsAsArray();
 
     self.items     = currItems.slice();
     self.itemTotal = currItems.length;
 
-    var newItemCount = Math.abs(self.itemTotal - oldItemTotal);
+    const newItemCount = Math.abs(self.itemTotal - oldItemTotal);
 
-    var newItems = currItems.splice(oldItemTotal, newItemCount);
+    let newItems = currItems.splice(oldItemTotal, newItemCount);
 
     newItems.forEach(function(item) {
       item.style.opacity = '0';
@@ -338,16 +321,16 @@ function Baraja(container, options) {
 
     newItems = newItems.reverse();
 
-    var count = 0;
+    let count = 0;
 
     newItems.forEach(function(item, index) {
       item.style.transform = 'scale(1.8) translate(200px) rotate(15deg)';
 
-      setTransition(item, 'all', 500, 'ease-out', index * 200);
+      setTransition(item, 'all', '500', 'ease-out', index * 200);
 
-      var cssTransform = 'none';
+      const cssTransform = 'none';
 
-      var eventHandler = function() {
+      const eventHandler = function() {
         ++count;
 
         item.removeEventListener('transitionend', eventHandler);
@@ -364,16 +347,16 @@ function Baraja(container, options) {
   }
 
   /**
-   * Close the spreaded fan.
+   * Close the spread fan.
    *
    * @param {Function} callback
-   *   Callback function.
+   *   Callback function (optional).
    *
    * @param {HTMLElement} element
-   *   HTML element.
+   *   HTML element (optional).
    */
-  function close(callback, element) {
-    var items = self.items;
+  function close(callback = null, element = null) {
+    let items = self.items;
 
     if (element) {
       items = items.filter(function(item) {
@@ -381,19 +364,19 @@ function Baraja(container, options) {
       });
     }
 
-    var force = (self.isClosed);
+    const force = (self.isClosed);
 
-    var cssTransform = 'none';
+    const cssTransform = 'none';
 
     items.forEach(function(item) {
-      var eventHandler = function() {
+      const eventHandler = function() {
         self.isClosed = true;
 
         item.removeEventListener('transitionend', eventHandler);
 
         resetTransition(item);
 
-        var timer = window.setTimeout(function() {
+        const timer = window.setTimeout(function() {
           setOrigin(item, 50, 50);
 
           if (callback) {
@@ -414,23 +397,23 @@ function Baraja(container, options) {
    * @param {Object} settings
    *   Fan settings (optional).
    */
-  function fan(settings) {
+  function fan(settings = {}) {
     self.isClosed = false;
 
-    settings = validateDefaultFanSettings(settings || {});
+    settings = validateDefaultFanSettings(settings);
 
-    var stepLeft = (settings.direction === 'left');
+    const stepLeft = (settings.direction === 'left');
 
     if (settings.origin.minX && settings.origin.maxX) {
-      var max = settings.origin.maxX;
-      var min = settings.origin.minX;
+      const max = settings.origin.maxX;
+      const min = settings.origin.minX;
 
-      var stepOrigin = (max - min) / self.itemTotal;
+      const stepOrigin = (max - min) / self.itemTotal;
 
       self.items.forEach(function(item) {
-        var pos = self.itemTotal - 1 - (parseInt(item.style.zIndex) - self.zIndexMin);
+        const pos = self.itemTotal - 1 - (parseInt(item.style.zIndex) - self.zIndexMin);
 
-        var originX = pos * (max - min + stepOrigin) / self.itemTotal + min;
+        let originX = pos * (max - min + stepOrigin) / self.itemTotal + min;
 
         if (stepLeft) {
           originX = max + min - originX;
@@ -444,24 +427,24 @@ function Baraja(container, options) {
       });
     }
 
-    var stepAngle = settings.range / (self.itemTotal - 1);
+    const stepAngle = settings.range / (self.itemTotal - 1);
 
-    var stepTranslation = settings.translation / (self.itemTotal - 1);
+    const stepTranslation = settings.translation / (self.itemTotal - 1);
 
-    var count = 0;
+    let count = 0;
 
     self.items.forEach(function(item) {
       setTransition(item, 'transform', settings.speed, settings.easing);
 
-      var pos = self.itemTotal - 1 - (parseInt(item.style.zIndex) - self.zIndexMin);
+      const pos = self.itemTotal - 1 - (parseInt(item.style.zIndex) - self.zIndexMin);
 
-      var val = (settings.center)
+      const val = (settings.center)
         ? settings.range / 2
         : settings.range;
 
-      var angle = val - stepAngle * pos;
+      let angle = val - stepAngle * pos;
 
-      var position = stepTranslation * (self.itemTotal - pos - 1);
+      let position = stepTranslation * (self.itemTotal - pos - 1);
 
       if (stepLeft) {
         angle    *= -1;
@@ -469,8 +452,8 @@ function Baraja(container, options) {
       }
 
       if (settings.scatter) {
-        var extraAngle    = Math.floor(Math.random() * stepAngle);
-        var extraPosition = Math.floor(Math.random() * stepTranslation);
+        const extraAngle    = Math.floor(Math.random() * stepAngle);
+        const extraPosition = Math.floor(Math.random() * stepTranslation);
 
         if (pos !== self.itemTotal - 1) {
           if (stepLeft) {
@@ -483,9 +466,9 @@ function Baraja(container, options) {
         }
       }
 
-      var cssTransform = 'translate(' + position + 'px) rotate(' + angle + 'deg)';
+      const cssTransform = `translate(${position}px) rotate(${angle}deg)`;
 
-      var eventHandler = function() {
+      const eventHandler = function() {
         ++count;
 
         item.removeEventListener('transitionend', eventHandler);
@@ -508,17 +491,17 @@ function Baraja(container, options) {
   function navigate(direction) {
     self.isClosed = false;
 
-    var stepNext = (direction === 'next');
+    const stepNext = (direction === 'next');
 
-    var zIndexCurr = (stepNext)
+    const zIndexCurr = (stepNext)
       ? self.zIndexMin + self.itemTotal - 1
       : self.zIndexMin;
 
-    var element = self.items.find(function(item) {
+    const element = self.items.find(function(item) {
       return (parseInt(item.style.zIndex) === zIndexCurr);
     });
 
-    var rotation, translation;
+    let rotation, translation;
 
     if (stepNext) {
       rotation = 5;
@@ -530,9 +513,9 @@ function Baraja(container, options) {
 
     setTransition(element, 'transform', self.options.speed, self.options.easing);
 
-    var cssTransform = 'translate(' + translation + 'px) rotate(' + rotation + 'deg)';
+    let cssTransform = `translate(${translation}px) rotate(${rotation}deg)`;
 
-    var eventHandler = function() {
+    let eventHandler = function() {
       element.removeEventListener('transitionend', eventHandler);
 
       updateStack(element, direction);
@@ -575,7 +558,7 @@ function Baraja(container, options) {
    * @return {Array}
    */
   function getItemsAsArray() {
-    var elements = container.querySelectorAll('li');
+    const elements = container.querySelectorAll('li');
     if (elements) {
       return Array.prototype.slice.call(elements);
     }
