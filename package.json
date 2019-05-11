@@ -5,6 +5,7 @@
   "main": "dist/baraja.min.js",
   "scripts": {
     "build": "node_modules/.bin/babel src -s -D -d dist --presets env",
+    "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
@@ -13,6 +14,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^5.16.0"
   }
 }
