@@ -11,6 +11,20 @@
     "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxy/baraja-js.git"
+  },
+  "keywords": [
+    "browser",
+    "plugin",
+    "animation",
+    "cards"
+  ],
+  "bugs": {
+    "url": "https://github.com/nuxy/baraja-js/issues"
+  },
+  "homepage": "https://github.com/nuxy/baraja-js#readme",
   "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
   "license": "MIT",
   "devDependencies": {
