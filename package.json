@@ -1,6 +1,6 @@
 {
   "name": "baraja-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A plugin for spreading items in a card-like fashion.",
   "main": "src/baraja.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
     "minify-css": "node_modules/.bin/node-minify --compressor clean-css --input 'dist/baraja.css' --output 'dist/baraja.min.css'",
     "minify-js": "node_modules/.bin/node-minify --compressor uglify-js --input 'dist/baraja.js' --output 'dist/baraja.min.js'",
-    "postinstall": "npm run build",
+    "preinstall": "npm install --ignore-scripts && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
