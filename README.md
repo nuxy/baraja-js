@@ -1,6 +1,10 @@
 # Baraja-JS [![npm version](https://badge.fury.io/js/baraja-js.svg)](https://badge.fury.io/js/baraja-js) [![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/baraja-js)
 
-_Baraja_ is a JavaScript plugin that allows to move elements in a card-like fashion and spread them like one would spread a deck of cards on a table.  It uses CSS transforms for rotating and translating the items.  There are several options available that will create various spreading possibilities of the items, for example, moving the items laterally or rotating them in a fan-like way.
+_Baraja_ is a JavaScript plugin that allows to move elements in a card-like fashion and spreads them like one would spread a deck of cards on a table.  It uses CSS transforms for rotating and translating the items.
+
+There are several options available that will create various spreading possibilities of the items, for example, moving the items laterally or rotating them in a fan-like way.
+
+Checkout the [demo](https://nuxy.github.io/baraja-js) for examples of use.
 
 ## Dependencies
 
@@ -16,7 +20,7 @@ Install the package into your project using [NPM](https://npmjs.com), or downloa
 
 There are two ways you can use this package.  One is by including the JavaScript/CSS sources directly.  The other is by importing the module into your component.
 
-#### HTML include
+### HTML include
 
 After you [build the distribution sources](#cli-options) the set-up is fairly simple..
 
@@ -27,7 +31,7 @@ After you [build the distribution sources](#cli-options) the set-up is fairly si
 var baraja = new Baraja(container, options);
 ```
 
-####Framework
+### Framework
 
 If your using a modern framework like [Aurelia](https://aurelia.io), [Angular](https://angular.io), [React](https://reactjs.org), or [Vue](https://vuejs.org)
 
