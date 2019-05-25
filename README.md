@@ -31,7 +31,7 @@ After you [build the distribution sources](#cli-options) the set-up is fairly si
 var baraja = new Baraja(container, options);
 ```
 
-### Framework
+### JS framework
 
 If your using a modern framework like [Aurelia](https://aurelia.io), [Angular](https://angular.io), [React](https://reactjs.org), or [Vue](https://vuejs.org)
 
@@ -40,6 +40,24 @@ import Baraja from 'baraja-js';
 
 const baraja = new Baraja(container, options);
 ```
+
+## Fan options
+
+Overriding the animation behavior can be done using the following options:
+
+| Option      | Description                            | Type    | Default  |
+|-------------|----------------------------------------|---------|----------|
+| direction   | Direction to fan the cards.            | String  | right    |
+| easing      | Animation type (ease-in/ease-out).     | String  | ease-out |
+| speed       | Length of time in milliseconds.        | Number  | 500      |
+| range       | Card horizontal spread distance.       | Number  | 90       |
+| translation | Card horizontal/vertical direction.    | Number  | 0        |
+| origin.x    | Card horizontal position (calculated). | Number  | 25       |
+| origin.y    | Card vertical position (calculated).   | Number  | 100      |
+| center      | Stack position is always centered.     | Boolean | true     |
+| scatter     | Position cards in a non-linear way.    | Boolean | false    |
+
+These options can also be used by the `Baraja.fan` method.  See the [animation examples](https://github.com/nuxy/baraja-js/blob/master/demo/index.html#L107) provided in the demo.
 
 ## Developers
 
@@ -57,7 +75,7 @@ Transpile ES6 sources (using [Babel](https://babeljs.io)) and minify to a distri
 
 > What was your motivation for creating this package?
 
-I use the [Codrops plugin](https://github.com/codrops/Baraja) on several personal projects and at this point, I have been officially abandoning any support for [jQuery](https://jquery.com) for more modern frameworks.  Unfortunately, the plugin was pretty old and a little behind on today's [JavaScript standards](https://es6.io),so achieving this was not possible without a complete rewrite.
+I use the [Codrops plugin](https://github.com/codrops/Baraja) on several personal projects and at this point, I have been officially abandoning any support for [jQuery](https://jquery.com) for more modern frameworks.  Unfortunately, the plugin was pretty old and a little behind on today's [JavaScript standards](https://es6.io) so achieving this was not possible without a complete rewrite.
 
 What I wanted was pretty simple..
 
