@@ -20,7 +20,7 @@ Install the package into your project using [NPM](https://npmjs.com), or downloa
 
 There are two ways you can use this package.  One is by including the JavaScript/CSS sources directly.  The other is by importing the module into your component.
 
-### HTML include
+### Script include
 
 After you [build the distribution sources](#cli-options) the set-up is fairly simple..
 
@@ -31,14 +31,29 @@ After you [build the distribution sources](#cli-options) the set-up is fairly si
 var baraja = new Baraja(container, options);
 ```
 
-### JS framework
+### Module import
 
 If your using a modern framework like [Aurelia](https://aurelia.io), [Angular](https://angular.io), [React](https://reactjs.org), or [Vue](https://vuejs.org)
 
 ```
 import Baraja from 'baraja-js';
+import 'baraja-js/dist/css/baraja.css';
 
 const baraja = new Baraja(container, options);
+```
+
+## HTML markup
+
+```
+<ul class="baraja-container">
+  <li><img src="card1.jpg" /></li>
+  <li><img src="card2.jpg" /></li>
+  <li><img src="card3.jpg" /></li>
+  <li><img src="card4.jpg" /></li>
+  <li><img src="card5.jpg" /></li>
+
+  ..
+</ul>
 ```
 
 ## Fan options
