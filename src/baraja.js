@@ -226,14 +226,12 @@ function Baraja(container, options) {
       }
     }
 
-    const timer = window.setTimeout(function() {
+    setTimeoutFrame(function() {
       if (easing === 'none') {
         element.style.opacity = '1';
       }
 
       element.style.transform = easing;
-
-      window.clearTimeout(timer);
     }, 25);
   }
 
@@ -281,7 +279,7 @@ function Baraja(container, options) {
 
     updateStack(element, 'prev');
 
-    const timer = window.setTimeout(function() {
+    setTimeoutFrame(function() {
       setTransition(element, 'all', self.options.speed, 'ease-in');
 
       const cssTransform = 'none';
@@ -293,8 +291,6 @@ function Baraja(container, options) {
       };
 
       applyTransition(element, cssTransform, eventHandler);
-
-      window.clearTimeout(timer);
     }, self.options.speed / 2);
   }
 
@@ -383,14 +379,12 @@ function Baraja(container, options) {
 
         resetTransition(item);
 
-        const timer = window.setTimeout(function() {
+        setTimeoutFrame(function() {
           setOrigin(item, 50, 50);
 
           if (callback) {
             callback.call();
           }
-
-          window.clearTimeout(timer);
         }, 25);
       };
 
@@ -548,6 +542,12 @@ function Baraja(container, options) {
 
   /**
    * Dispatch the fan spread action.
+   *
+   * @param {Function} func
+   *   Function to execute.
+   *
+   * @param {*} args
+   *   Function arguments.
    */
   function dispatch(func, args) {
     if (self.itemTotal > 1 || !self.isAnimating) {
@@ -561,6 +561,34 @@ function Baraja(container, options) {
         func.call(self, args);
       }
     }
+  }
+
+  /**
+   * setTimeout alternative for handling animations.
+   *
+   * @param {Function} handler
+   *   Animation handler.
+   *
+   * @param {Number} timeout
+   *   Timeout in milliseconds (optional).
+   */
+  function setTimeoutFrame(handler, timeout = 5000) {
+    let start = 0;
+
+    const step = function(timestamp) {
+      if (!start) {
+        start = timestamp;
+      }
+
+      let progress = timestamp - start;
+      if (progress < timeout) {
+        window.requestAnimationFrame(step);
+      } else {
+        handler();
+      }
+    };
+
+    window.requestAnimationFrame(step);
   }
 
   /**
@@ -604,7 +632,7 @@ function Baraja(container, options) {
 /**
  * Set global/exportable instance, where supported.
  */
-window.baraja = function (container, options) {
+window.baraja = function(container, options) {
   return new Baraja(container, options);
 };
 
