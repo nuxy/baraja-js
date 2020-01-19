@@ -12,7 +12,7 @@ Checkout the [demo](https://nuxy.github.io/baraja-js) for examples of use.
 
 ## Installation
 
-Install the package into your project using [NPM](https://npmjs.com), or download the [sources](http://github.com/nuxy/baraja-js/archive/master.zip).
+Install the package into your project using [NPM](https://npmjs.com), or download the [sources](https://github.com/nuxy/baraja-js/archive/master.zip).
 
     $ npm install baraja-js
 
@@ -24,18 +24,20 @@ There are two ways you can use this package.  One is by including the JavaScript
 
 After you [build the distribution sources](#cli-options) the set-up is fairly simple..
 
-```
+```html
 <script type="text/javascript" src="path/to/baraja.min.js"></script>
 <link rel="stylesheet" href="path/to/baraja.min.css" media="all" />
 
-var baraja = new Baraja(container, options);
+<script type="text/javascript">
+  var baraja = new Baraja(container, options);
+</script>
 ```
 
 ### Module import
 
 If your using a modern framework like [Aurelia](https://aurelia.io), [Angular](https://angular.io), [React](https://reactjs.org), or [Vue](https://vuejs.org)
 
-```
+```javascript
 import Baraja from 'baraja-js';
 import 'baraja-js/dist/css/baraja.css';
 
@@ -44,7 +46,7 @@ const baraja = new Baraja(container, options);
 
 ## HTML markup
 
-```
+```html
 <ul class="baraja-container">
   <li><img src="card1.jpg" /></li>
   <li><img src="card2.jpg" /></li>
@@ -78,7 +80,7 @@ These options can also be used by the `Baraja.fan` method.  See the [animation e
 
 ### CLI options
 
-Run [ESLint](https://eslint.org/) on project sources:
+Run [ESLint](https://eslint.org) on project sources:
 
     $ npm run lint
 
