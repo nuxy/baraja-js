@@ -1,4 +1,5 @@
-# Baraja-JS [![npm version](https://badge.fury.io/js/baraja-js.svg)](https://badge.fury.io/js/baraja-js) [![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/baraja-js)
+
+# Baraja-JS [![npm version](https://badge.fury.io/js/baraja-js.svg)](https://badge.fury.io/js/baraja-js) [![](https://img.shields.io/npm/dm/baraja-js)](https://www.npmjs.com/package/baraja-js)
 
 _Baraja_ is a JavaScript plugin that allows to move elements in a card-like fashion and spreads them like one would spread a deck of cards on a table.  It uses CSS transforms for rotating and translating the items.
 
