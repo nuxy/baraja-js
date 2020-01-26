@@ -6,6 +6,16 @@
  *  Licensed under the MIT license:
  *  http://www.opensource.org/licenses/mit-license.php
  */
+
+'use strict';
+
+/**
+ * @param {HTMLElement} container
+ *   Containing HTML element.
+ *
+ * @param {Object} options
+ *   Configuration overrides.
+ */
 function Baraja(container, options) {
   const self = this;
 
