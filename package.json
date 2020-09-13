@@ -1,6 +1,6 @@
 {
   "name": "baraja-js",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "description": "A plugin for spreading items in a card-like fashion.",
   "main": "src/baraja.js",
   "scripts": {
