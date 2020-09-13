@@ -111,7 +111,7 @@ function Baraja(container, options) {
    *   HTML element.
    *
    * @param {String} direction
-   *   Stack direction (next|prev).
+   *   Stack direction (last|next).
    */
   function updateStack(element, direction) {
     const stepNext = (direction === 'next');
@@ -287,7 +287,7 @@ function Baraja(container, options) {
     element.style.opacity   = '0';
     element.style.transform = 'scale(2) translate(100px) rotate(20deg)';
 
-    updateStack(element, 'prev');
+    updateStack(element, 'last');
 
     setTimeoutFrame(function() {
       setTransition(element, 'all', self.options.speed, 'ease-in');
@@ -498,10 +498,10 @@ function Baraja(container, options) {
   }
 
   /**
-   * Show the next/previous item in the stack.
+   * Show the last/next item in the stack.
    *
    * @param {String} direction
-   *   Stack direction (next|prev).
+   *   Stack direction (last|next).
    */
   function navigate(direction) {
     self.isClosed = false;
@@ -624,12 +624,13 @@ function Baraja(container, options) {
     dispatch(fan, settings);
   };
 
-  this.next = function() {
-    dispatch(navigate, 'next');
+  // Deprecated previous() method (use last)
+  this.last = this.previous = function() {
+    dispatch(navigate, 'last');
   };
 
-  this.previous = function() {
-    dispatch(navigate, 'prev');
+  this.next = function() {
+    dispatch(navigate, 'next');
   };
 
   this.close = function() {
