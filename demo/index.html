@@ -68,7 +68,7 @@
               <img src="images/2.jpg" alt="image2" />
               <h4>Vermouth Land</h4><p>Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p>
             </li>
-            <li>
+            <li class="addItems">
               <img src="images/3.jpg" alt="image3" />
               <h4>Electrodynamics</h4><p>Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p>
             </li>
@@ -84,11 +84,11 @@
               <img src="images/6.jpg" alt="image6" />
               <h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p>
             </li>
-            <li>
+            <li class="addItems">
               <img src="images/7.jpg" alt="image7" />
               <h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p>
             </li>
-            <li>
+            <li class="addItems">
               <img src="images/8.jpg" alt="image8" />
               <h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p>
             </li>
@@ -120,7 +120,7 @@
               <img src="images/5.jpg" alt="image5" />
               <h4>Disco Fever</h4><p>Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p>
             </li>
-            <li>
+            <li class="addItems">
               <img src="images/6.jpg" alt="image6" />
               <h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p
               </li>
@@ -409,7 +409,14 @@
         if (!addElm.classList.contains('disabled')) {
           addElm.classList.add('disabled');
 
-          baraja.add('<li><img src="images/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li><li><img src="images/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li><li><img src="images/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li><li><img src="images/9.jpg" alt="image9"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>');
+          var elements = document.querySelectorAll('.addItems');
+
+          var html = '';
+          elements.forEach(function(elm) {
+            html += elm.outerHTML;
+          });
+
+          baraja.add(html);
         }
       });
     </script>
