@@ -64,7 +64,9 @@ const baraja = new Baraja(container, options);
 ## Methods
 
 ```javascript
+baraja.add(html);
 baraja.fan(options);
+baraja.close();
 baraja.last();
 baraja.next();
 ```
@@ -85,7 +87,7 @@ Overriding the animation behavior can be done using the following options:
 | center      | Stack position is always centered.     | Boolean | true     |
 | scatter     | Position cards in a non-linear way.    | Boolean | false    |
 
-These options are supported by the `Baraja.fan` method.  See the [animation examples](https://github.com/nuxy/baraja-js/blob/master/demo/index.html#L107) provided in the demo.
+These options are supported by the `baraja.fan` method.  See the [animation examples](https://github.com/nuxy/baraja-js/blob/master/demo/index.html#L107) provided in the demo.
 
 ## Developers
 
