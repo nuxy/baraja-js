@@ -19,6 +19,12 @@ Install the package into your project using [NPM](https://npmjs.com), or downloa
 
     $ npm install baraja-js
 
+### Alternative
+
+To add to an existing [React](https://reactjs.org) project you can install this package using [YARN](https://yarnpkg.com).
+
+    $ yarn add react-baraja-js
+
 ## Usage
 
 There are two ways you can use this package.  One is by including the JavaScript/CSS sources directly.  The other is by importing the module into your component.
