@@ -14,9 +14,9 @@
  *   Containing HTML element.
  *
  * @param {Object} options
- *   Configuration overrides.
+ *   Configuration overrides (optional).
  */
-function Baraja(container, options) {
+function Baraja(container, options = {}) {
   const self = this;
 
   const defaults = {
