@@ -77,6 +77,13 @@ baraja.last();
 baraja.next();
 ```
 
+## Global options
+
+| Option | Description                        | Type   | Default     |
+|--------|------------------------------------|--------|-------------|
+| easing | Animation type (ease-in/ease-out). | String | ease-in-out |
+| speed  | Length of time in milliseconds.    | Number | 300         |
+
 ## Fan options
 
 Overriding the animation behavior can be done using the following options:
