@@ -27,9 +27,9 @@
   "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
   "license": "MIT",
   "devDependencies": {
-    "@node-minify/clean-css": "^4.0.5",
+    "@node-minify/clean-css": "^4.1.2",
     "@node-minify/cli": "^4.1.0",
-    "@node-minify/uglify-js": "^4.0.5",
+    "@node-minify/uglify-js": "^4.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
