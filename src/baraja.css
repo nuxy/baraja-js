@@ -23,17 +23,3 @@ ul.baraja-container li {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-
-.no-js ul.baraja-container {
-  width: auto;
-  height: auto;
-  text-align: center;
-}
-
-.no-js ul.baraja-container li {
-  position: relative;
-  display: inline-block;
-  width: 200px;
-  height: 310px;
-  margin: 10px;
-}
