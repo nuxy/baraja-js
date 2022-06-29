@@ -35,5 +35,11 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "eslint": "^5.16.0"
+  },
+  "overrides": {
+    "braces": "3.0.0",
+    "glob-parent": "^6.0.0",
+    "got": "^12.0.0",
+    "minimist": "^1.2.6"
   }
 }
