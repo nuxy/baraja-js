@@ -4,10 +4,11 @@
   "description": "A plugin for spreading items in a card-like fashion.",
   "main": "src/baraja.js",
   "scripts": {
-    "build": "node_modules/.bin/babel src -s -D -d dist && npm run minify-css && npm run minify-js",
-    "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
-    "minify-css": "node_modules/.bin/node-minify --compressor clean-css --input 'dist/baraja.css' --output 'dist/baraja.min.css'",
-    "minify-js": "node_modules/.bin/node-minify --compressor uglify-js --input 'dist/baraja.js' --output 'dist/baraja.min.js'",
+    "build": "babel src -s -D -d dist && npm run minify-css && npm run minify-js",
+    "lint": "eslint --ignore-path .gitignore src",
+    "minify-css": "node-minify --compressor clean-css --input 'dist/baraja.css' --output 'dist/baraja.min.css'",
+    "minify-js": "node-minify --compressor uglify-js --input 'dist/baraja.js' --output 'dist/baraja.min.js'",
+    "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
