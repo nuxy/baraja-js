@@ -646,6 +646,8 @@ function Baraja(container, options = {}) {
       close();
     }
   };
+
+  return self;
 }
 
 /**
