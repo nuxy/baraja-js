@@ -38,7 +38,7 @@ After you [build the distribution sources](#cli-options) the set-up is fairly si
 <link rel="stylesheet" href="path/to/baraja.min.css" media="all" />
 
 <script type="text/javascript">
-  var baraja = new Baraja(container, options);
+  baraja(container, options);
 </script>
 ```
 
@@ -53,10 +53,10 @@ import 'baraja-js/dist/css/baraja.css';
 const baraja = new Baraja(container, options);
 ```
 
-## HTML markup
+### HTML markup
 
 ```html
-<ul class="baraja-container">
+<ul class="baraja">
   <li><img src="card1.jpg" /></li>
   <li><img src="card2.jpg" /></li>
   <li><img src="card3.jpg" /></li>
