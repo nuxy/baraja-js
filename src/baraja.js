@@ -616,33 +616,33 @@ function Baraja(container, options = {}) {
   /**
    * Protected members.
    */
-  this.add = function(html) {
-    if (!self.isAnimating) {
+  self.add = function(html) {
+    if (!this.isAnimating) {
       dispatch(add, html);
     }
   };
 
-  this.fan = function(settings) {
-    if (!self.isAnimating) {
+  self.fan = function(settings) {
+    if (!this.isAnimating) {
       dispatch(fan, settings);
     }
   };
 
   // Deprecated previous() method (use last)
-  this.last = this.previous = function() {
-    if (!self.isAnimating) {
+  self.last = self.previous = function() {
+    if (!this.isAnimating) {
       dispatch(navigate, 'last');
     }
   };
 
-  this.next = function() {
-    if (!self.isAnimating) {
+  self.next = function() {
+    if (!this.isAnimating) {
       dispatch(navigate, 'next');
     }
   };
 
-  this.close = function() {
-    if (!self.isAnimating) {
+  self.close = function() {
+    if (!this.isAnimating) {
       close();
     }
   };
