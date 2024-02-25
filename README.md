@@ -1,6 +1,6 @@
 # Baraja JS
 
-[![npm version](https://badge.fury.io/js/baraja-js.svg)](https://badge.fury.io/js/baraja-js) [![](https://img.shields.io/npm/dm/baraja-js)](https://www.npmjs.com/package/baraja-js) [![Install size](https://packagephobia.com/badge?p=baraja-js)](https://packagephobia.com/result?p=baraja-js)
+[![npm version](https://badge.fury.io/js/baraja-js.svg)](https://badge.fury.io/js/baraja-js) [![](https://img.shields.io/npm/dm/baraja-js)](https://www.npmjs.com/package/baraja-js) [![Install size](https://packagephobia.com/badge?p=baraja-js)](https://packagephobia.com/result?p=baraja-js) [![](https://img.shields.io/github/v/release/nuxy/baraja-js)](https://github.com/nuxy/baraja-js/releases)
 
 ![Preview](https://raw.githubusercontent.com/nuxy/baraja-js/master/package.gif)
 
