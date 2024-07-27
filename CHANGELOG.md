@@ -11,3 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 - Replaced `this` referenced to self.
 - Removed Preview (use Built-in)
 - Removed deprecated CSS overridess.
+
+## [1.3.1] - 2024-07-27
+
+- NPM package upgrade/security updates
