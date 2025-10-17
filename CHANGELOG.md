@@ -14,4 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 
 ## [1.3.1] - 2024-07-27
 
-- NPM package upgrade/security updates
+- Upgraded outdated NPM dependencies / NPM security updates
+
+## 1.3.2 - 2025-10-17
+
+- Upgraded outdated NPM dependencies / NPM security updates
+- Replaced ESLint deprecated release
+- Renamed Babel config to recommended
