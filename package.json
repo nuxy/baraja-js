@@ -5,7 +5,7 @@
   "main": "src/baraja.js",
   "scripts": {
     "build": "babel src -s -D -d dist && npm run minify-css && npm run minify-js",
-    "lint": "eslint --ignore-path .gitignore src",
+    "lint": "eslint src",
     "minify-css": "node-minify --compressor clean-css --input 'dist/baraja.css' --output 'dist/baraja.min.css'",
     "minify-js": "node-minify --compressor uglify-js --input 'dist/baraja.js' --output 'dist/baraja.min.js'",
     "prepack": "npm run build",
@@ -40,7 +40,7 @@
     "@node-minify/cli": "^6.2.0",
     "@node-minify/uglify-js": "^4.0.5",
     "babel-loader": "^8.4.1",
-    "eslint": "^8.57.1",
+    "eslint": "^9.38.0",
     "sass": "^1.93.2",
     "sass-loader": "^13.3.3"
   },
